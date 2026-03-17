@@ -10,8 +10,15 @@ export default function Login() {
   });
 
   function handleSubmit(event) {
+
     event.preventDefault();
+
     console.log(enteredValues);
+
+    // setEnteredValues({
+    //   email: "",
+    //   password: "",
+    // }); // Reset the form fields after submission
   }
 
   function handleInputChange(identifier, value) {
