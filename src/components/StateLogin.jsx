@@ -1,24 +1,17 @@
 import { useState } from "react";
 
 export default function Login() {
-  // const [enteredEmail, setEnteredEmail] = useState('');
-  // const [enteredPassword, setEnteredPassword] = useState('');
-
   const [enteredValues, setEnteredValues] = useState({
     email: "",
     password: "",
   });
 
-  function handleSubmit(event) {
+  const emailIsInvalid = enteredValues.email != "" && !enteredValues.email.includes("@");
 
+  function handleSubmit(event) {
     event.preventDefault();
 
     console.log(enteredValues);
-
-    // setEnteredValues({
-    //   email: "",
-    //   password: "",
-    // }); // Reset the form fields after submission
   }
 
   function handleInputChange(identifier, value) {
@@ -50,6 +43,9 @@ export default function Login() {
             onChange={(event) => handleInputChange("email", event.target.value)}
             value={enteredValues.email}
           />
+          <div className="control-error">
+            {emailIsInvalid && <p>Please enter a valid email address.</p>}
+          </div>
         </div>
 
         <div className="control no-margin">
@@ -58,7 +54,9 @@ export default function Login() {
             id="password"
             type="password"
             name="password"
-            onChange={(event) => handleInputChange("password", event.target.value)}
+            onChange={(event) =>
+              handleInputChange("password", event.target.value)
+            }
             value={enteredValues.password}
           />
         </div>
