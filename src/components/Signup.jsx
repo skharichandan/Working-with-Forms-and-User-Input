@@ -40,7 +40,7 @@ export default function Signup() {
             type="password"
             name="password"
             required
-            minLength={8}
+            minLength={6}
           />
         </div>
 
